@@ -3,10 +3,8 @@ import { setConfig } from "../../utils/requestConfig.js";
 import { formatTrainingData } from "../../utils/formatTrainingData.js";
 import { authContext } from "../../context/authContext.js";
 import { useNavigate } from "react-router-dom";
-
 import TrainingItem from "../TrainingItem/TrainingItem";
 import useHttp from "../../hooks/useHttp";
-
 import "./Trainings.scss";
 import Loader from "../Reusable/Loader.js";
 
@@ -55,7 +53,7 @@ export default function Trainings({ trainingCategory }) {
         return navigate("/auth/login");
       }
       const getTrainings = await fetchTrainings(
-        "http://localhost:8800/trainings",
+        `${process.env.REACT_APP_API_ACCESS}/trainings`,
         setConfig("GET", null, true, authCtx.authToken)
       );
       setTrainings(getTrainings);

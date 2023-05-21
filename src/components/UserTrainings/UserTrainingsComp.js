@@ -2,11 +2,9 @@ import "./UserTrainingsComp.scss";
 import { useState, useEffect, useContext } from "react";
 import useHttp from "../../hooks/useHttp";
 import { newTrainingItemContext } from "../../context/newTrainingItemContext";
-
 import TrainingItem from "../TrainingItem/TrainingItem";
 import NewTrainingForm from "../NewTraining/NewTrainingForm";
 import { Link, useNavigate } from "react-router-dom";
-
 import { formatTrainingData } from "../../utils/formatTrainingData";
 import { authContext } from "../../context/authContext";
 import { setConfig } from "../../utils/requestConfig";
@@ -41,7 +39,7 @@ export default function UserTrainingsComp({ isNewTraining, isEdited }) {
         return navigate("/auth/login");
       }
       const myTrainings = await fetchMyTrainings(
-        "http://localhost:8800/user-trainings",
+        `${process.env.REACT_APP_API_ACCESS}/user-trainings`,
         setConfig("GET", null, true, authCtx.authToken)
       );
       setUserTrainings(myTrainings);

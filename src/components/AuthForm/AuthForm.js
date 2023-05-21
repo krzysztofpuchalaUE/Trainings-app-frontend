@@ -1,7 +1,6 @@
 import "./AuthForm.scss";
 import Form from "../Reusable/Form";
 import { setConfig } from "../../utils/requestConfig";
-
 import useHttp from "../../hooks/useHttp";
 import useForm from "../../hooks/useForm";
 import { useEffect, useState, useContext } from "react";
@@ -73,7 +72,7 @@ export default function AuthForm() {
     const loginData = [email, password];
     const loginUserAuth = async (data) => {
       const response = await loginUser(
-        "http://localhost:8800/auth/login",
+        `${process.env.REACT_APP_API_ACCESS}/auth/login`,
         setConfig("POST", {
           data,
         })
@@ -104,7 +103,7 @@ export default function AuthForm() {
       const data = { registerFirstName, registerLastName, email, password };
       const registerUserAuth = () => {
         registerUser(
-          "http://localhost:8800/auth/signup",
+          `${process.env.REACT_APP_API_ACCESS}/auth/signup`,
           setConfig("POST", {
             data,
           })

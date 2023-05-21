@@ -1,12 +1,11 @@
 import { useCallback, useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { newTrainingItemContext } from "../../context/newTrainingItemContext";
 import { authContext } from "../../context/authContext";
-
 import "./TrainingItem.scss";
 import useHttp from "../../hooks/useHttp";
 import { setConfig } from "../../utils/requestConfig";
+
 export default function TrainingItem({
   item,
   isUserTraining,
@@ -67,7 +66,7 @@ export default function TrainingItem({
   useEffect(() => {
     async function getUserId() {
       const data = await getUser(
-        "http://localhost:8800/trainings",
+        `${process.env.REACT_APP_API_ACCESS}/trainings`,
         setConfig("GET", null, true, authCtx.authToken)
       );
       if (!data) return;
@@ -83,7 +82,7 @@ export default function TrainingItem({
   const onTrainingRegisterHandler = () => {
     const register = () => {
       postTraining(
-        "http://localhost:8800/trainings",
+        `${process.env.REACT_APP_API_ACCESS}/trainings`,
         setConfig(
           "POST",
           {
@@ -100,7 +99,7 @@ export default function TrainingItem({
 
     const unregister = () => {
       postTraining(
-        "http://localhost:8800/trainings",
+        `${process.env.REACT_APP_API_ACCESS}/trainings`,
         setConfig(
           "DELETE",
           {
@@ -128,7 +127,9 @@ export default function TrainingItem({
     }
   };
 
-  const img = `http://localhost:8800/uploads/${encodeURIComponent(item?.icon)}`;
+  const img = `${process.env.REACT_APP_API_ACCESS}/uploads/${encodeURIComponent(
+    item?.icon
+  )}`;
 
   return (
     <div

@@ -5,10 +5,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { categories, languages, levels } from "../../appConfig";
 import { formatTrainingData } from "../../utils/formatTrainingData";
 import axios from "axios";
-
-import { setConfig, requestGetConfig } from "../../utils/requestConfig";
+import { setConfig } from "../../utils/requestConfig";
 import { newTrainingItemContext } from "../../context/newTrainingItemContext";
-
 import Form from "../Reusable/Form";
 import "./NewTrainingForm.scss";
 import { authContext } from "../../context/authContext";
@@ -211,7 +209,7 @@ export default function NewTrainingForm({ isEdit }) {
         const addCustomTraining = async () => {
           try {
             const res = await axios.post(
-              "http://localhost:8800/user-trainings/new-training",
+              `${process.env.REACT_APP_API_ACCESS}/user-trainings/new-training`,
               formData,
               config,
               authCtx.authToken
@@ -229,7 +227,7 @@ export default function NewTrainingForm({ isEdit }) {
         const updateTraining = async () => {
           try {
             const res = await axios.patch(
-              `http://localhost:8800/user-trainings/${trainingId}/edit`,
+              `${process.env.REACT_APP_API_ACCESS}/user-trainings/${trainingId}/edit`,
               formData,
               config,
               authCtx.authToken
@@ -298,7 +296,7 @@ export default function NewTrainingForm({ isEdit }) {
           return navigate("/auth/login");
         }
         const getTrainingData = await getTrainingByID(
-          `http://localhost:8800/user-trainings/${trainingId}/edit`,
+          `${process.env.REACT_APP_API_ACCESS}/user-trainings/${trainingId}/edit`,
           setConfig("GET", null, true, authCtx.authToken)
         );
         console.log(getTrainingData);

@@ -1,5 +1,4 @@
 import "./Categories.scss";
-
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { setConfig } from "../../utils/requestConfig";
@@ -27,7 +26,7 @@ export default function Categories({ setTrainingCategory }) {
         return navigate("/auth/login");
       }
       const getCategories = await fetchCategories(
-        "http://localhost:8800/trainings",
+        `${process.env.REACT_APP_API_ACCESS}/trainings`,
         setConfig("GET", null, true, authCtx.authToken)
       );
       if (!getCategories) return;
