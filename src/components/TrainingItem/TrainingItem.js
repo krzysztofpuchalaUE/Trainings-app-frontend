@@ -149,7 +149,7 @@ export default function TrainingItem({
         src={
           isCreate && newTrainingItemCtx.image !== null
             ? URL.createObjectURL(newTrainingItemCtx.image)
-            : item?.icon !== null
+            : item?.icon !== undefined
             ? img
             : ""
         }
