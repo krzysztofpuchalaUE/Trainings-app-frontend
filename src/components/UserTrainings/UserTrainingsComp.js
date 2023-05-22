@@ -61,7 +61,7 @@ export default function UserTrainingsComp({ isNewTraining, isEdited }) {
         )}
         {isNewTraining && !isEdited && <NewTrainingForm />}
         {isNewTraining && isEdited && <NewTrainingForm isEdit={true} />}
-        {userTrainings?.length < 1 && !isLoading && (
+        {userTrainings?.length < 1 && !isLoading && !isNewTraining && (
           <div className="user-no-trainings">
             <h2>You have no trainings yet, create your first </h2>
             <i className="bx bx-wink-smile"></i>
