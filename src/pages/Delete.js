@@ -18,7 +18,7 @@ export default function DeletePage() {
 
     const deleteTraining = () => {
       postTraining(
-        `http://localhost:8800/user-trainings/${trainingId}/delete`,
+        `${process.env.REACT_APP_API_ACCESS}/${trainingId}/delete`,
         setConfig("DELETE", {
           trainingId: trainingId,
         })
