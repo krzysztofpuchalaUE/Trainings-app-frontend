@@ -127,9 +127,7 @@ export default function TrainingItem({
     }
   };
 
-  const img = `${process.env.REACT_APP_API_ACCESS}/uploads/${encodeURIComponent(
-    item?.icon
-  )}`;
+  const img = item?.icon;
 
   return (
     <div
