@@ -56,7 +56,9 @@ export default function UserTrainingsComp({ isNewTraining, isEdited }) {
       <div className={isNewTraining ? "left-new-training" : "left-trainings"}>
         {isLoading && !isNewTraining && !isEdited && (
           <div className="user-no-trainings">
-            <Loader />
+            <div className="loader-no-trainings">
+              <Loader />
+            </div>
           </div>
         )}
         {isNewTraining && !isEdited && <NewTrainingForm />}
