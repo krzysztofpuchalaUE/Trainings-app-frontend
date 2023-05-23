@@ -299,7 +299,6 @@ export default function NewTrainingForm({ isEdit }) {
           `${process.env.REACT_APP_API_ACCESS}/user-trainings/${trainingId}/edit`,
           setConfig("GET", null, true, authCtx.authToken)
         );
-        console.log(getTrainingData);
         if (!getTrainingData) return;
         const getTraining = await getTrainingData?.training;
         const formattedData = formatTrainingData(getTraining);
